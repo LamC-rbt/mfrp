@@ -7,6 +7,7 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{amsfonts}
+\usepackage{bbm}
 \usepackage{nicefrac}
 \usepackage{microtype}
 \usepackage{lipsum}
@@ -16,7 +17,7 @@
 
 
 
-\title{A template for the \emph{arxiv} style}
+\title{Бэггинг над MARS со случайными поворотами признаков}
 
 \author{ David S.~Hippocampus\thanks{Use footnote for providing further
 		information about author (webpage, alternative
@@ -56,7 +57,7 @@
 %%% Once the PDF is generated, you can check the metadata with
 %%% $ pdfinfo template.pdf
 \hypersetup{
-pdftitle={A template for the arxiv style},
+pdftitle={Бэггинг над MARS со случайными поворотами признаков},
 pdfsubject={q-bio.NC, q-bio.QM},
 pdfauthor={David S.~Hippocampus, Elias D.~Striatum},
 pdfkeywords={First keyword, Second keyword, More},
@@ -64,6 +65,7 @@ pdfkeywords={First keyword, Second keyword, More},
 
 \begin{document}
 \maketitle
+
 
 \begin{abstract}
 Алгоритм multivariate adaptive regression splines (MARS) обеспечивает гибкий
@@ -90,10 +92,21 @@ pdfkeywords={First keyword, Second keyword, More},
 
 В данной работе предлагается использовать бэггинг над MARS (Реализация PyEarth\footnote{\url{https://github.com/scikit-learn-contrib/py-earth}}), а так же использовать модификацию - случайный поворот признаков, на которых в последствии будет обучаться алгоритм. Предыдущие подходы не учитывали случай, предполагающий, что базисная функция может функционально зависеть от, например, некоторой линейной комбинации признаков. В таком случае целевая переменная не представима в виде базисных функций, которые предлагают строить другие подходы. Однако использование ансамбля моделей, где каждая модель использует свое собственное признаковое пространство, позволяет нивелировать данную проблему.
 
-\section{Headings: first level}
+\section{Постановка задачи}
 \label{sec:headings}
 
-\lipsum[4] See Section \ref{sec:headings}.
+%\lipsum[4] See Section \ref{sec:headings}.
+В задачах регрессии целевая переменная $y$ представляется в виде функции от $p$ переменных с некоторым шумом $\varepsilon$: $$y=f(x^1, x^2, ..., x^p) + \varepsilon,$$ где f неизвестная функция, и $\mathbbm{E}\varepsilon = 0$.
+
+По рассматриваемому набору данных $D = \{x_i, y_i\}_{i=1}^{N}$, функция $f(x^1, x^2, ..., x^p)$ аппроксимируется некоторой функцией $g(x^1, x^2, ..., x^p)$. Качество аппроксимации оценивается с помощью среднего квадрата ошибки (MSE):
+$$MSE(D) = \frac{1}{N}\sum_{k=1}^{N} (g(x_k) - y_k)^2$$
+либо схожей величины $RMSE(D) = \sqrt{MSE(D)}$.
+Считается, что модель с меньшим значением среднего квадрата ошибки лучше соответствует
+данным.
+
+В данной работе функция $g(x)$ строилась согласно алгоритму MARS (Multivariate Adaptive Regression Splines) \cite{friedman1991multivariate}, который аппроксимирует исходную функцию $f$ в виде:
+$$h(x) = \sum_{m=0}^{M} a_m \cdot B_m(x),$$ где $B_m(x) = \prod_{k=1}^{K_m} b_{k,m}.$
+$b_{k,m}$ - базисная функция от одной переменной, которая имеет вид либо $max\{+(x-t),~0\}$, либо $max\{-(x-t), 0\}.$
 
 \subsection{Headings: second level}
 \lipsum[5]
