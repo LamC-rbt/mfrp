@@ -22,6 +22,7 @@
 \usepackage{mathtools}
 \usepackage{comment}
 \usepackage{multicol}
+\usepackage{comment}
 
 \usepackage[all]{xy}
 
@@ -47,145 +48,104 @@
 \captionsetup[subfloat]{labelformat=empty}
 
 %----------------------------------------------------------------------------------------------------------
-
+\begin{comment}
 \title[Пример слайдов по работе]{Пример слайдов по работе \\ курса}
 \author{И.\,О.\,Фамилия}
 
 \institute[]{Московский физико-технический институт}
 \date[2022]{\small 10\;февраля\;2022\,г.}
-
+\end{comment}
 %---------------------------------------------------------------------------------------------------------
 \begin{document}
 
-\begin{frame}
-\titlepage
+
+%----------------------------------------------------------------------------------------------------------
+\section{Multivariate Adaptive Regression Splines}
+\begin{frame}{Multivariate Adaptive Regression Splines}
+%~\\[-1mm]
+%Заданы
+%\begin{enumerate}[1)]
+%	\item \ldots,
+%	\item \ldots.
+%\end{enumerate}
+$D = \{x_i, y_i\}_{i=1}^{N}$ -- набор данных. $f(x^1, x^2, ..., x^p)$ аппроксимируем $g(x^1, x^2, ..., x^p)$. Качество аппроксимации оценивается с помощью RMSE:
+$$RMSE(D) = \sqrt{\frac{1}{N}\sum_{k=1}^{N} (g(x_k) - y_k)^2}$$
+%\medskip
+
+%Параметрические семейства:
+%\[
+%\setlength\abovedisplayskip{0pt}
+%\mathfrak{F} = \left\{\mathbf{f}| \mathbf{f} = %\text{softmax}\bigr(\mathbf{v}\bigr(\mathbf{x}\bigr)/%T\bigr), \quad \mathbf{v}: \mathbb{R}^{n} \to %\mathbb{R}^K \right\},
+%\]
+%\[
+%\mathfrak{G} = \left\{\mathbf{g}| \mathbf{g} = %\text{softmax}\bigr(\mathbf{z}\bigr(\mathbf{x}\bigr)/%T\bigr), \quad \mathbf{z}: \mathbb{R}^n \to %\mathbb{R}^K \right\},
+%\]
+%где~\ldots.
+$$g(x) = \sum_{m=0}^{M} a_m \cdot B_m(x), \textit{где~} B_m(x) = \prod_{k=1}^{K_m} b_{k,m}.$$
+$b_{k,m}$ равен либо $max\{+(x-t),~0\}$, либо $max\{-(x-t), 0\}.$
+
+\begin{minipage}[t]{0.2\textwidth}
+\includegraphics[scale=0.25]{vis_hinge.PNG}
+
+\end{minipage}%
+\hfill
+%\vrule
+\hfill
+\hskip-2cm
+\begin{minipage}[t]{0.6\textwidth}
+\vskip-2.5cm
+Идея: Создать ансамбль $M(x) = \frac{1}{T}\sum_{t}^{T}a_t(x)$, где у каждой модели вход умножен на случайную ортогональную матрицу. $\overline{x} = Qx$, где $Q$ сгенерирована из распределения Хаара.
+\end{minipage}
+
+
 \end{frame}
 
 %----------------------------------------------------------------------------------------------------------
-\section{Слайд об исследованиях}
-\begin{frame}{Слайд об исследованиях}
-\bigskip
-Исследуется проблема \ldots.
-\begin{block}{Цель исследования~---}
-предложить метод \ldots.
-\end{block}
-\begin{block}{Требуется предложить}
-\justifying
-\begin{enumerate}[1)]
-\item метод \ldots,
-\item метод \ldots,
-\item метод \ldots.
-\end{enumerate}
-\end{block}
-\begin{block}{Решение}
-Для \ldots.
-\end{block}
-\end{frame}
-
-%---------------------------------------------------------------------------------------------------------
-\section{Постановка задачи \ldots}
-\begin{frame}{Постановка задачи \ldots}
-Заданы
-\begin{enumerate}[1)]
-    \item признаки \ldots,
-    \item целевая переменная \ldots,
-    \item \ldots.
-\end{enumerate}
-
-\ldots
-
-\bigskip
-
-Требуется выбрать модель \ldots из множества
-\[
-	\mathfrak{G} = \left\{\mathbf{g}| \mathbf{g}:\mathbb{R}^{n} \to \mathbb{Y}^\prime\right\}.
-\]
-Оптимизационная задача \ldots:
-\[
-	\mathbf{g} = \arg\min_{\mathbf{g} \in \mathfrak{G}} \mathcal{L}\bigr(\ldots\bigr),
-\]
-где $\mathcal{L}$~--- функция ошибки.
-
-\bigskip
-\footnotetext[1]{\textit{Lopez-Paz D., Bottou L., Scholkopf B., Vapnik V.} Unifying distillation and privileged information // ICLR, 2016.}
-\footnotetext[2]{\textit{Hinton G., Vinyals O., Dean J.} Distilling the knowledge in a neural network // NIPS, 2015.}
-\end{frame}
-
-%----------------------------------------------------------------------------------------------------------
-\section{Предложенный метод \ldots}
-\begin{frame}{Предложенный метод \ldots}
-~\\[-1mm]
-Заданы
-\begin{enumerate}[1)]
-	\item \ldots,
-	\item \ldots.
-\end{enumerate}
-
-\medskip
-Параметрические семейства:
-\[
-\setlength\abovedisplayskip{0pt}
-\mathfrak{F} = \left\{\mathbf{f}| \mathbf{f} = \text{softmax}\bigr(\mathbf{v}\bigr(\mathbf{x}\bigr)/T\bigr), \quad \mathbf{v}: \mathbb{R}^{n} \to \mathbb{R}^K \right\},
-\]
-\[
-\mathfrak{G} = \left\{\mathbf{g}| \mathbf{g} = \text{softmax}\bigr(\mathbf{z}\bigr(\mathbf{x}\bigr)/T\bigr), \quad \mathbf{z}: \mathbb{R}^n \to \mathbb{R}^K \right\},
-\]
-где~\ldots.
-
-\medskip
-Функция ошибки
-\[
-\setlength\abovedisplayskip{0pt}
-\begin{aligned}
-   \mathcal{L}\bigr(\mathbf{g}\bigr) = &-\sum_{i=1}^{m}\underbrace{{\sum_{k=1}^{K}y^k_i\log\mathbf{g}\bigr(\mathbf{x}_i\bigr)\bigr|_{T=1}}}_{\text{исходная функция потерь}}- \sum_{i=1}^{m}\underbrace{{\sum_{k=1}^{K}\mathbf{f}\bigr(\mathbf{x}_i\bigr)\bigr|_{T=T_0}\log\mathbf{g}\bigr(\mathbf{x}_i\bigr)\bigr|_{T=T_0}}}_{\text{слагаемое дистилляции}},
-\end{aligned}
-\setlength\belowdisplayskip{0pt}
-\]
-где~\ldots.
-
-Оптимальная модель выбирается из класса,
-$\hat{\mathbf{g}} = \arg\min\limits_{\mathbf{g} \in \mathfrak{G}_{\text{cl}}} \mathcal{L}\bigr(\mathbf{g}\bigr).$
-\end{frame}
-
-%----------------------------------------------------------------------------------------------------------
-\section{Анализ предложенного метода \ldots}
-\begin{frame}{Анализ предложенного метода \ldots}
+\section{Результаты применения}
+\begin{frame}{Результаты применения}
 \justifying
 
-На графике показана зависимость значения параметров$w_i$ в зависимости от параметра~$l_1$-регуляризации~$C$.
+На первом графике показана зависимость значения RMSE от доли признаков, использующихся в бэггинге. На втором графике изображено значение RMSE на валидационной выборке у различных алгоритмов.
 \begin{figure}[h!]
-\includegraphics[width=0.45\textwidth]{../figures/log_reg_cs_exp.eps}
-\includegraphics[width=0.45\textwidth]{../figures/log_reg_cs_exp.eps}
+\includegraphics[width=0.48\textwidth]{../figures/be_subsample.pdf}
+\includegraphics[width=0.48\textwidth]{../figures/re_valmodels_2.pdf}
 \end{figure}
 
-С увеличением параметра регуляризации~$C$ число ненулевых параметров~$w_i$ уменьшается.
+Таким образом, использование случайных поворотов позволяет добиться лучшего качества.
 
 \end{frame}
 
 %----------------------------------------------------------------------------------------------------------
-\section{Выводы}
+\section{Результаты на тесте}
 \begin{frame}{Выводы}
-\justifying
-	\begin{enumerate}
-	\justifying
-	    \item Предложен \ldots.
-        \item Доказаны теоремы \ldots, 
-        \begin{itemize}
-            \item[---] \ldots,
-            \item[---] \ldots.
-        \end{itemize}
-        \item Предложен метод \ldots
-        \begin{itemize}
-            \item[---] \ldots,
-            \item[---] \ldots.
-        \end{itemize}
-        \item Предложены методы \ldots
-        \begin{itemize}
-            \item[---] \ldots,
-            \item[---] \ldots.
-        \end{itemize}
-        \item Предложена вероятностная интерпретации \ldots.
-	\end{enumerate}
+
+В таблице приведены результаты работы алгоритмов на тестовой выборке.
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Модель\textbackslashНабор данных & BH & CH & RE & DD\\
+    \hline
+    Классический MARS  & 3.09 &  0.66 &  5.27 &  53.5\\
+    \hline
+    MARS* & 3.32 &  0.67 &  6.08 &  57.2\\
+    \hline
+    Бэггинг без случайных поворотов  & \textbf{2.43} & 0.63 &  4.92 &  53.1\\
+    \hline
+    Бэггинг + 
+    случайные повороты & 2.47 & 0.62 &  \textbf{4.48} &  \textbf{52.2}\\
+    \hline
+    Ridge-регрессия  & 5.41 &  0.75 &  6.81 &  58.3\\
+    \hline
+    Случайный лес  & 2.77 & 0.63 & 5.06 &  54.1\\
+    \hline
+    Бустинг над 
+    деревьями & 2.51 &  \textbf{0.61} &  4.85 &  54.3\\
+    \hline
+\end{tabular}
+%\caption{\label{tab:1} Значение RMSE на тестовой выборке для каждой модели. Жирным выделен лучший результат.}
+\end{center}
+\end{table}
 \end{frame}
 %----------------------------------------------------------------------------------------------------------
 
