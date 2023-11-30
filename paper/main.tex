@@ -23,6 +23,7 @@
 		%information about author (webpage, alternative
 		%address)---\emph{not} for acknowledging funding agencies.} \\
 	МГУ им. М.В. Ломоносова\\
+        Москва\\
 	%Cranberry-Lemon University\\
 	%Pittsburgh, PA 15213 \\
 	\texttt{s02200360@gse.cs.msu.ru} \\
@@ -34,6 +35,7 @@
 	%Mount-Sheikh University\\
 	%Santa Narimana, Levand \\
         МГУ им. М.В. Ломоносова\\
+        Москва\\
 	\texttt{v.v.kitov@yandex.ru} \\
 	%% \AND
 	%% Coauthor \\
@@ -83,11 +85,11 @@ pdfkeywords={First keyword, Second keyword, More},
 %\lipsum[2]
 %\lipsum[3]
 В качестве популярного метода непараметрической регрессии алгоритм 
-многомерных адаптивных регрессионных сплайнов (MARS) был впервые представлен Джеромом Фридманом в 1991 г. \cite{friedman1991multivariate}. Благодаря своей гибкости и точности MARS использовался во многих исследованиях, где возникает классическая для машинного обучения задача регрессии, включая прогнозирование спроса на энергию, необходимую для транспортировки \cmmnt{(M.A. Sahraei, H. Duman, M.Y. Çodur et al, 2021)} \cite{sahraei2021prediction}, анализ реакций роста, связанных с макропитательными веществами \cmmnt{(M Akin et al, 2020)} \cite{akin2020analysis}, построение системы принятия решений по борьбе с загрязнением озоном \cmmnt{(Yang, Chen, Chang, Sattler, \& Wen, 2009)} \cite{yang2009decision}, оценку подверженности овражной эрозии \cmmnt{(Conoscenti, Agnesi, Cama, Caraballo-Arias, \& Rotigliano, 2018)} \cite{conoscenti2018assessment}, оценку тепловой нагрузки в зданиях \cmmnt{(Roy, Roy, \& Balas, 2018)} \cite{roy2018estimating}, моделирование суточной концентрации растворенного кислорода \cmmnt{(Heddam \& Kisi, 2018)} \cite{heddam2018modelling} и др.
+многомерных адаптивных регрессионных сплайнов (MARS) был впервые представлен Джеромом Фридманом в 1991 г. \cite{friedman1991multivariate}. Благодаря своей гибкости и точности MARS использовался во многих исследованиях, где возникает классическая для машинного обучения задача регрессии, включая прогнозирование спроса на энергию, необходимую для транспортировки\cmmnt{(M.A. Sahraei, H. Duman, M.Y. Çodur et al, 2021)} \cite{sahraei2021prediction}, анализ реакций роста, связанных с макропитательными веществами \cmmnt{(M Akin et al, 2020)} \cite{akin2020analysis}, построение системы принятия решений по борьбе с загрязнением озоном \cmmnt{(Yang, Chen, Chang, Sattler, \& Wen, 2009)} \cite{yang2009decision}, оценку подверженности овражной эрозии \cmmnt{(Conoscenti, Agnesi, Cama, Caraballo-Arias, \& Rotigliano, 2018)} \cite{conoscenti2018assessment}, оценку тепловой нагрузки в зданиях \cmmnt{(Roy, Roy, \& Balas, 2018)} \cite{roy2018estimating}, моделирование суточной концентрации растворенного кислорода \cmmnt{(Heddam \& Kisi, 2018)} \cite{heddam2018modelling} и др.
 Также MARS используется и в медицинских целях, например, для выявления влияния пола на факторы, оказывающих воздействие на нарушения опорно-двигательного аппарата плеч, шеи и верхних конечностей
 \cmmnt{(Serrano, Sanchez, Lasheras, Iglesias-Rodríguez, \& Valverde, 2020)} \cite{serrano2020identification}.
 
-С момента появления классического алгоритма MARS~\cite{friedman1991multivariate} уже было произведено множество исследований, направленных на улучшение точности предсказания в задаче регрессии и ускорение обучения модели. Одними из первых стали модели с полиномиальными сплайнами \cite{stone1997polynomial}, в которой удаление базисной функции из алгоритма влекло за собой последующее удаление всех произведенных от нее элементов, и баесовская модификация MARS~\cite{denison1998bayesian}, где использовались марковские цепи и метод Монте-Карло.
+С момента появления классического алгоритма MARS~\cite{friedman1991multivariate} уже было произведено множество исследований, направленных на улучшение точности предсказания в задаче регрессии и ускорение обучения модели. Одними из первых стали модели с полиномиальными сплайнами \cite{stone1997polynomial}, в которой удаление базисной функции из алгоритма влекло за собой последующее удаление всех произведенных от нее элементов, и байесовская модификация MARS~\cite{denison1998bayesian}, где использовались марковские цепи и метод Монте-Карло.
 Еще одним ответвлением стал CMARS~\cite{weber2012cmars}, использующий непрерывные методы оптимизации и регуляризации. 
 
 Чтобы улучшить точность предсказаний алгоритма MARS и время обучения, были испробованы различные подходы. Например, ранее был предложен способ быстрой оптимизации узлов с использованием метода восхождения к вершине, где перебор порогов начинается с точки, на которой был достигнут максимум на предыдущем шаге \cmmnt{(Xinglong Ju, Victoria C.P. Chen, 2021)} \cite{ju2021fast}. Также в MARS можно использовать B-сплайны, что показало свою эффективность в решении задачи регрессии \cmmnt{(Sergey Bakin, Markus Hegland \& Michael R. Osborne, 2000)} \cite{bakin2000parallel}, либо другие улучшения, как Robust MARS \cmmnt{(Ozmen \& Weber, 2014)} \cite{ozmen2011rcmars}, который лучше справляется с менее надежными данными. Существую и другие подходы, расширяющие применение MARS, например, выпуклый вариант MARS, подходящий для решения специфических типов задач \cmmnt{(Martinez, Diana L., et al, 2015)}\cite{martinez2015convex}
@@ -203,68 +205,15 @@ $\overline{x} = Qx$, где $Q$ - случайная ортогональная 
 \end{table}
 
 
-\subsection{Обсуждение и~выводы}
+\subsection{Выводы}
 
 Таким образом, использование бэггинга над MARS на трех из четырех наборов данных позволило достичь лучшего результата на тестовой выборке. Однако стоит заметить, что в большинстве случаев именно подход со случайными поворотами признакового пространства помог добиться меньшего значения $RMSE$. То есть случайные повороты действительно смогли расширить семейство рассматриваемых базовых алгоритмов, уменьшив корреляцию между моделями.
 
-Однако сложность построения ансамблевой модели составляет $\mathcal{O}(n)$, а если используется еще и матрица поворота, то появляются дополнительные затраты памяти порядка $\mathcal{O}(nd^2)$, где $n$ - количество базовых алгоритмов в ансамбле, $d$ - размерность пространства признаков. Бороться с этой проблемой можно, например, используя лишь некоторое подмножество матриц поворота
-
-\section{Examples of citations, figures, tables, references}
-\label{sec:others}
-
-\subsection{Citations}
-Citations use \verb+natbib+. The documentation may be found at
-\begin{center}
-	\url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
-\end{center}
-
-Here is an example usage of the two main commands (\verb+citet+ and \verb+citep+): Some people thought a thing \citep{kour2014real, hadash2018estimate} but other people thought something else \citep{kour2014fast}. Many people have speculated that if we knew exactly why \citet{kour2014fast} thought this\dots
-
-\subsection{Figures}
-\lipsum[10]
-See Figure \ref{fig:fig1}. Here is how you add footnotes. \footnote{Sample of the first footnote.}
-\lipsum[11]
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{../figures/log_reg_cs_exp.eps}
-	\caption{Sample figure caption.}
-	\label{fig:fig1}
-\end{figure}
-
-\subsection{Tables}
-See awesome Table~\ref{tab:table}.
-
-The documentation for \verb+booktabs+ (`Publication quality tables in LaTeX') is available from:
-\begin{center}
-	\url{https://www.ctan.org/pkg/booktabs}
-\end{center}
+Однако сложность построения ансамблевой модели составляет $\mathcal{O}(n)$, а если используется еще и матрица поворота, то появляются дополнительные затраты памяти порядка $\mathcal{O}(nd^2)$, где $n$ - количество базовых алгоритмов в ансамбле, $d$ - размерность пространства признаков. Бороться с этой проблемой можно, например, используя лишь некоторое подмножество матриц поворота.
 
 
-\begin{table}
-	\caption{Sample table title}
-	\centering
-	\begin{tabular}{lll}
-		\toprule
-		\multicolumn{2}{c}{Part}                   \\
-		\cmidrule(r){1-2}
-		Name     & Description     & Size ($\mu$m) \\
-		\midrule
-		Dendrite & Input terminal  & $\sim$100     \\
-		Axon     & Output terminal & $\sim$10      \\
-		Soma     & Cell body       & up to $10^6$  \\
-		\bottomrule
-	\end{tabular}
-	\label{tab:table}
-\end{table}
-
-\subsection{Lists}
-\begin{itemize}
-	\item Lorem ipsum dolor sit amet
-	\item consectetur adipiscing elit.
-	\item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
-\end{itemize}
-
+\section{Заключение}
+Таким образом, в данной работе была показана эффективность ансамблевого подхода над алгоритмом MARS для решения задач регрессии. Так же был предложен новый способ построения базовых алгоритмов - применение случайных поворотов пространства признаков для каждой отдельной модели в ансамбле, что помогло разнообразить семейство алгоритмов и добиться меньшего значения функции потерь на тестовой выборке у рассмотренных наборов данных.
 
 \bibliographystyle{plain}
 \bibliography{references}
